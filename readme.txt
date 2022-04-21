@@ -1,3 +1,5 @@
+ ***** This is my first wordpress plugin, and i want to do more plugins, all tips are welcome ***
+
 === Flash Author ===
 Contributors: BlackCorsair
 Tags: author, user nicename, nicename, users, user
