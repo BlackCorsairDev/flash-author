@@ -58,7 +58,7 @@ class flashAuthor {
   
     public function _the_author( $author ) {
 		$this->author = $author;
-		$this->target = the_author_meta('ID');
+		//$this->target = the_author_meta('ID');
 		return $this->_the_flash();
     }
 	
