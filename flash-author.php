@@ -83,7 +83,7 @@ class flashAuthor {
 		if ( $this->image == 0 or empty($this->image) ) {
 			return $this->author;
 		}
-		return esc_html("<span style='{$this->style}'>{$this->author}</span>"); 
+		return "<span style='{$this->style}'>{$this->author}</span>"; 
     }
 
     public function _save( $user_id ) {
