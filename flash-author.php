@@ -13,7 +13,6 @@ Requires at least: 5.9
 Requires PHP: 7.4
 License: GPLv2+
 Author URI: https://blackdemo.store/
-Update URI: https://wordpress.org/plugins/flash-author/
 */
 
 if ( !defined('ABSPATH') ) { 
@@ -22,19 +21,10 @@ if ( !defined('ABSPATH') ) {
 
 define( 'FAUTHOR_PLUGIN_URL', plugin_dir_url( __FILE__ ) ) ;
 define( 'FAUTHOR_DIR', __DIR__ . '/' ) ;
-define( 'FAUTHOR_IMG_COUNT', fnick_img_count() ) ;
 
-function fnick_img_count() {
-	$i = 1;
-	foreach (glob(FAUTHOR_DIR . 'img/*.gif') as $img) {
-		$i++;
-    }
-	return $i;
-}
+$flashAuthor = new BlackCorsairDevflashAuthor();
 
-$flashAuthor = new flashAuthor();
-
-class flashAuthor {
+class BlackCorsairDevflashAuthor {
 	private $target; 
 	private $image; 
 	private $author; 
@@ -78,7 +68,7 @@ class flashAuthor {
 	
     public function _the_flash() {
 		$this->image = $this->_the_img();
-		$this->style = $this->_the_style();
+		$this->style = esc_html($this->_the_style());
 		if ( is_blog_admin() ) return $this->author;
 		if ( $this->image == 0 or empty($this->image) ) {
 			return $this->author;
@@ -96,8 +86,8 @@ class flashAuthor {
 
     public function _show_user_profile( $user ) {
 		$this->target = $user->ID;
-		$value = $this->_the_img();
-		$author_nicename = get_the_author_meta( 'nicename' , $user->ID);
+		$value =  esc_html($this->_the_img());
+		$author_nicename =  esc_html(get_the_author_meta( 'nicename' , $user->ID));
 	    require_once FAUTHOR_DIR . 'tpl/items.php' ;
     }
 	
